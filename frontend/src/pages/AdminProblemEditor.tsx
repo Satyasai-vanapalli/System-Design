@@ -5,7 +5,7 @@ import { ArrowLeft, Code2, Link2, Loader2, Save, Youtube } from 'lucide-react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import { api } from '../lib/api'
-import type { Concept, Language, ProblemDetail, Solution } from '../lib/types'
+import type { Concept, Language, ProblemDetail } from '../lib/types'
 import { cn, languageLabel, monacoLanguage } from '../lib/utils'
 
 const languages:Language[]=['C','CPP','JAVA','PYTHON','KOTLIN']
