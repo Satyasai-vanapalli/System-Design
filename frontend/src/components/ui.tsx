@@ -1,0 +1,11 @@
+import { AnimatePresence, motion } from 'framer-motion'
+import { X } from 'lucide-react'
+import type { ReactNode } from 'react'
+import { cn } from '../lib/utils'
+
+export function Modal({open,onClose,title,children,size='md'}:{open:boolean;onClose:()=>void;title:string;children:ReactNode;size?:'md'|'lg'}){
+  return <AnimatePresence>{open&&<motion.div className="fixed inset-0 z-[80] grid place-items-center bg-ink/45 p-4 backdrop-blur-sm" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} onMouseDown={e=>e.target===e.currentTarget&&onClose()}><motion.div role="dialog" aria-modal="true" aria-label={title} className={cn('card max-h-[88vh] w-full overflow-hidden',size==='lg'?'max-w-3xl':'max-w-lg')} initial={{opacity:0,y:18,scale:.98}} animate={{opacity:1,y:0,scale:1}} exit={{opacity:0,y:12,scale:.98}}><div className="flex items-center justify-between border-b px-5 py-4"><h2 className="font-display text-lg font-bold">{title}</h2><button aria-label="Close" className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-white/10" onClick={onClose}><X className="size-4"/></button></div><div className="max-h-[calc(88vh-65px)] overflow-y-auto p-5">{children}</div></motion.div></motion.div>}</AnimatePresence>
+}
+export function DifficultyBadge({value}:{value:'EASY'|'MEDIUM'|'HARD'}){const styles={EASY:'bg-emerald-50 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300',MEDIUM:'bg-amber-50 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300',HARD:'bg-rose-50 text-rose-700 dark:bg-rose-400/10 dark:text-rose-300'};return <span className={cn('inline-flex rounded-full px-2.5 py-1 text-[11px] font-bold capitalize',styles[value])}>{value.toLowerCase()}</span>}
+export function Skeleton({className}: {className?:string}){return <div className={cn('animate-pulse rounded-xl bg-slate-200/80 dark:bg-white/10',className)}/>}
+export function Empty({icon,heading,body}:{icon:ReactNode;heading:string;body:string}){return <div className="grid place-items-center px-6 py-16 text-center"><div className="mb-4 grid size-12 place-items-center rounded-2xl bg-moss-50 text-moss-600 dark:bg-moss-400/10 dark:text-moss-300">{icon}</div><h3 className="font-display font-bold">{heading}</h3><p className="mt-1 max-w-sm text-sm leading-6 text-slate-500 dark:text-slate-400">{body}</p></div>}

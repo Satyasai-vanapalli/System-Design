@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: light; font-synthesis: none; text-rendering: optimizeLegibility; }
+  :root.dark { color-scheme: dark; }
+  * { @apply border-slate-200 dark:border-white/10; }
+  html { scroll-behavior: smooth; }
+  body { @apply m-0 min-w-[320px] bg-paper font-sans text-ink antialiased transition-colors dark:bg-[#101512] dark:text-[#eef2ed]; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  ::selection { @apply bg-moss-200 text-moss-900 dark:bg-moss-700 dark:text-white; }
+  :focus-visible { @apply outline-none ring-2 ring-moss-500 ring-offset-2 ring-offset-paper dark:ring-offset-[#101512]; }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8; }
+  .card { @apply rounded-2xl border border-black/[.07] bg-white shadow-soft dark:border-white/[.08] dark:bg-[#161d19]; }
+  .button-primary { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-moss-700 disabled:pointer-events-none disabled:opacity-50 dark:bg-moss-400 dark:text-[#101510] dark:hover:bg-moss-300; }
+  .button-secondary { @apply inline-flex items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-4 py-2.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-moss-300 hover:bg-moss-50 dark:border-white/10 dark:bg-white/[.04] dark:text-white dark:hover:bg-white/[.08]; }
+  .eyebrow { @apply text-[11px] font-bold uppercase tracking-[.2em] text-moss-600 dark:text-moss-300; }
+}
+
+.noise::after { content:''; position:absolute; inset:0; opacity:.18; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E"); }
+.editor-shell .monaco-editor, .editor-shell .overflow-guard { border-radius: 0 0 14px 14px; }
+.scrollbar-none { scrollbar-width:none; }
+.scrollbar-none::-webkit-scrollbar { display:none; }
+
+.hero-surface { background: radial-gradient(ellipse at 5% 3%, rgba(211, 231, 196, .36), transparent 47%), linear-gradient(140deg, #fafbf8 0%, #f5f7f1 56%, #f0f4ec 100%); }
+.dark .hero-surface { background: radial-gradient(ellipse at 5% 3%, rgba(91, 142, 68, .12), transparent 47%), linear-gradient(140deg, #101512 0%, #131b16 56%, #17221b 100%); }
+.hero-grid { pointer-events: none; opacity: .36; background-image: radial-gradient(rgba(69, 96, 58, .18) .8px, transparent .8px); background-size: 22px 22px; mask-image: linear-gradient(100deg, #000 0%, transparent 68%); }
+.dark .hero-grid { opacity: .16; background-image: radial-gradient(rgba(189, 220, 174, .42) .8px, transparent .8px); }
+.diagram-halo { background: radial-gradient(circle, rgba(139, 177, 117, .24), transparent 68%); }
+.architecture-line { background: linear-gradient(to bottom, transparent, rgba(159, 197, 138, .45) 12%, rgba(159, 197, 138, .45) 88%, transparent); }
+.stat-card { @apply flex items-center gap-4 rounded-2xl border border-black/[.06] bg-white p-4 dark:border-white/[.08] dark:bg-[#161d19] sm:p-5; }
+.stat-icon { @apply grid size-11 shrink-0 place-items-center rounded-xl; }
+.module-card { @apply rounded-2xl border border-black/[.07] bg-white p-5 shadow-[0_5px_18px_rgba(30,42,34,.035)] transition hover:border-moss-200 dark:border-white/[.08] dark:bg-[#161d19] sm:p-6; }
+.module-icon { @apply grid size-11 shrink-0 place-items-center rounded-xl; }
+.lesson-row { @apply flex min-w-0 items-center gap-3 rounded-xl border border-transparent px-2.5 py-2.5 transition hover:border-moss-200/70 hover:bg-moss-50/60 dark:hover:border-white/[.08] dark:hover:bg-white/[.035]; }
+.learn-cover { background: radial-gradient(ellipse at 93% 15%, rgba(176, 207, 153, .35), transparent 40%), linear-gradient(135deg, #eff5e9 0%, #fafbf8 80%); }
+.dark .learn-cover { background: radial-gradient(ellipse at 93% 15%, rgba(120, 169, 95, .12), transparent 40%), linear-gradient(135deg, #1b2820 0%, #161d19 80%); }
+
